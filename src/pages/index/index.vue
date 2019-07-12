@@ -12,7 +12,7 @@
             <image src="../../static/images/music_icon.png" class="musicImg"/>
             <image src="../../static/images/music_play.png" class="music_play playImg"/>
         </div>
-        <div class="info" :animation="animationData">
+        <div class="info" :animation="animationData" style="display: none;">
             <div class="content">
                 <h1>Mr.姬 & Miss.徐</h1>
                 <p>谨定于 2019年2月2日 （星期六）中午12:00</p>
@@ -84,7 +84,9 @@ export default {
 
   onShareAppMessage: function (res) {
     return {
-      path: '/pages/index/main'
+      title: '送上您的祝福',
+      path: '/pages/index/main',
+      imageUrl: '../../static/logo.jpg'
     }
   }
 }

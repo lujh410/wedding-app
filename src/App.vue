@@ -42,8 +42,12 @@ export default {
 </script>
 
 <style lang="stylus">
+::-webkit-scrollbar {
+    display: none;
+}
 page
     height 100%
+    -webkit-overflow-scrolling: touch;
 image
     display block
 

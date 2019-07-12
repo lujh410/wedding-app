@@ -44,7 +44,7 @@ export default {
     position absolute
     top 20rpx
     width 690rpx
-    height 800rpx
+    height 85%
     margin-left 30rpx
     box-shadow 0 0 10rpx rgba(0, 0, 0, 0.1)
     border-radius 16rpx
@@ -126,7 +126,7 @@ image
     height 80rpx
     margin 0 auto
     position absolute
-    bottom 100rpx
+    bottom 50rpx
     left 50%
     margin-left -40rpx
 </style>

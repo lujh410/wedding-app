@@ -2,7 +2,8 @@
     <div class="greet">
         <image class="head" src="https://666f-forguo-0979a1-1251886253.tcb.qcloud.la/wxapp/wedding/static/imgs/heart-animation.gif"/>
         <scroll-view scroll-y
-            class="box">
+            class="box"
+            @scrolltolower="loadMore">
             <div class="item" v-for="(item, index) in userList" :key="index">
                 <image :src="item.user.avatarUrl"/>
                 <p>{{item.user.nickName}}</p>
@@ -23,6 +24,8 @@ export default {
   name: 'Greet',
   data () {
     return {
+      isMore: true,
+      page: 0,
       userList: [],
       openId: '',
       userInfo: ''
@@ -88,13 +91,33 @@ export default {
       })
     },
 
+    loadMore () {
+      if (!this.isMore) {
+        return false
+      }
+      cloud.get('usergreet', this.page).then((res) => {
+        if (res.errMsg === 'collection.get:ok') {
+          if (!res.data || res.data.length <= 0) {
+            this.isMore = false
+          } else {
+            if (res.data.length <= 10) {
+              this.isMore = false
+            }
+            this.userList = [...this.userList, ...res.data]
+            wx.hideNavigationBarLoading()
+            this.page++
+          }
+        }
+      })
+    },
     getUserList () {
       const that = this
       wx.showNavigationBarLoading()
-      cloud.get('usergreet').then((res) => {
+      cloud.get('usergreet', this.page).then((res) => {
         if (res.errMsg === 'collection.get:ok') {
           that.userList = res.data
           wx.hideNavigationBarLoading()
+          that.page++
         }
       })
     }
@@ -119,17 +142,18 @@ export default {
         width 200rpx
         margin 0 auto
     .box
-        height 700rpx
+        height 600rpx
         width 690rpx
+        margin 50rpx auto
         margin-left 30rpx
         border-radius 16rpx
         box-shadow 0 0 10rpx rgba(0, 0, 0, 0.1)
         display flex
-        justify-content flex-start
+        justify-content center
         align-items flex-start
         flex-wrap wrap
         .item
-            width 120rpx
+            width 175rpx
             display flex
             flex-direction column
             justify-content flex-start

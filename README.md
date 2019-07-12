@@ -1,14 +1,14 @@
+# 婚礼邀请函小程序
 
-
-## 婚礼邀请函小程序
 > 基于微信小程序的婚礼邀请函
+
 ---
-### 基础
+## 基础
 *  [小程序文档](https://developers.weixin.qq.com/miniprogram/dev)
 *  [mpvue框架](http://mpvue.com)
 *  [小程序云开发](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
 ---
-### 技术点
+## 技术点
 
 小程序使用了云开发和云函数，所以就没有后台的什么事了
 相册、留言等数据都是使用云开发，云数据库来存储，
@@ -25,7 +25,8 @@
 
 ---
 
-### 说明
+## 说明
+
 小程序分为五个模块
 1. 邀请函
 2. 相册
@@ -34,22 +35,29 @@
 5. 留言
 
 ---
-###### 体验码如下：
+##### 体验码如下：
 
 ![体验码](https://666f-forguo-0979a1-1251886253.tcb.qcloud.la/static/imgs/wedding.png)
 
 ---
-###  github地址
+
+##  github地址
 
 github：https://github.com/forguos/wedding
 
 个人博客：https://blog.csdn.net/WEIGUO19951107
 
-个人站点：https://f2e.forguo.com
+个人站点：https://www.forguo.com
 
 ---
 
-### Build Setup
+## 数据库json文件
+
+在`data`文件夹下，导入即可
+
+文件名即表名
+
+## Build Setup
 
 ```bash
 # install dependencies

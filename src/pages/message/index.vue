@@ -27,7 +27,7 @@
             <button class="right" @tap="toForm">我要出席</button>
         </div>
         <div class="dialog" v-show="isOpen">
-            <textarea focus="true" maxlength="80" class="desc" placeholder="在这里输入您想要说的话" name="textarea" placeholder-style="color:#ccc;" v-model="desc"/>
+            <input focus="true" maxlength="80" class="desc" placeholder="在这里输入您想要说的话" name="textarea" placeholder-style="color:#ccc;" v-model="desc"/>
             <div class="btn">
                 <button class="left" @tap="sendMessage">发送留言</button>
                 <button class="right" @tap="cancel">取消</button>
@@ -42,9 +42,9 @@
         <div class="video" v-show="isVideo">
             <h-video @closeVideo="closeVideo"></h-video>
         </div>
-        <div class="form" v-show="isForm">
-            <h-form @closeForm="closeForm" @getFromlist="getFromlist"></h-form>
-        </div>
+<!--        <div class="form" v-show="isForm">-->
+<!--            <h-form @closeForm="closeForm" @getFromlist="getFromlist"></h-form>-->
+<!--        </div>-->
         <div class="form-list" v-show="isFormlist">
             <h-formlist @closeFormlist="closeFormlist" :formList="formList"></h-formlist>
         </div>
@@ -319,7 +319,11 @@ export default {
                     justify-content space-between
                     align-items center
                     .top-l
+                        width 95%
                         height 50rpx
+                        white-space nowrap
+                        overflow hidden
+                        text-overflow ellipsis
                         line-height 50rpx
                         color #444
                         font-size 28rpx
@@ -344,6 +348,7 @@ export default {
         display flex
         justify-content center
         align-items center
+        z-index 9
         .left, .right
             height 80rpx
             line-height 80rpx
@@ -356,14 +361,14 @@ export default {
             margin 0
     .dialog
         position fixed
-        bottom 0
+        bottom 15px
         left 0
         z-index 99
         background #fff
         width 100%
-        textarea
-            height 200rpx
-            line-height 42rpx
+        input
+            height 50rpx
+            line-height 50rpx
             font-size 30rpx
             color #333
             resize none
